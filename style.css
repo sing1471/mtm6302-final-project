@@ -1,0 +1,30 @@
+
+body{
+    font-family: 'Roboto', sans-serif;
+}
+.hide{
+    display: none;
+}
+
+img{
+    width: 20%;
+    height: auto
+}
+
+.container{
+    text-align: center;
+}
+
+.font-size {
+    position: relative;
+    display: inline-block;
+  }
+  
+.hero1{
+    margin-bottom:10px
+}
+
+.dark-mode {
+    background-color: black;
+    color: white;
+  }
