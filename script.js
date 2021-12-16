@@ -2,11 +2,16 @@ const greetingdiv=document.getElementById("greeting")
 const title=document.getElementById("image-title")
 const ctime=document.getElementById("current-time")
 const button=document.getElementById("more")
+const $buttons=document.getElementsByName("button")
 const more=document.getElementById("more2")
 const customize=document.getElementById("customize")
 const full_Date=document.getElementById("full-date")
 const dark_mode=document.getElementById("dark-mode")
+const exp=document.getElementById("explanation")
+
+
 const bdy=document.body;
+
 
 
 
@@ -27,10 +32,12 @@ fetch('https://api.nasa.gov/planetary/apod?api_key=pnUYF2NG6A4xs2U4XWdKKM5YN6cJN
         document.querySelector('img').setAttribute('src', imageData.url)
      
         title.textContent=imageData.title;
+        exp.textContent=imageData.explanation;
         return imageData
         }
     })
-
+ 
+   
 // clock
 const timeinterval = setInterval(clock, 1000);
   function clock() {
@@ -80,7 +87,7 @@ const timeinterval = setInterval(clock, 1000);
     
 
     greetingdiv.innerHTML=`<h2>${greeting}</h2>`;
-    console.log(greeting);
+
     ctime.innerHTML=`<h3>Time ${hours}:${minutes}:${seconds}:${prepand}</h3>`;
     full_Date.innerHTML=`<h3>Date ${dd}/${month}/${yyyy}</h3>`;
   }
@@ -98,4 +105,24 @@ more.addEventListener('click',function(){
 
 dark_mode.addEventListener('click',function(){
     bdy.classList.toggle('dark-mode'); 
+
+    (localStorage.getItem('modestrg')=="true") ? localStorage.setItem('modestrg', "false"):localStorage.setItem('modestrg', "true");
+    ;
+    console.log(localStorage.getItem('modestrg'))
+
+ 
+    
 })
+function initialize(){
+  let mod_s=localStorage.getItem('modestrg');
+  if(mod_s=="true"){
+    bdy.classList.add('dark-mode');
+  
+    console.log("sucess")}
+    else{
+      return;
+    }
+ 
+}
+console.log(localStorage.getItem('modestrg'))
+initialize();
